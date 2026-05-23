@@ -38,4 +38,14 @@ public class Task {
     public String toString() {
         return "[" + id + "] " + description + " (" + status + ")";
     }
+
+    public String toJson() {
+        return "{\n" +
+                "   \"id\": " + this.id + ",\n" +
+                "   \"description\": \"" + this.description + "\",\n" +
+                "   \"status\": \"" + this.status + "\",\n" +
+                "   \"createdAt\": \"" + this.createdAt + "\",\n" +
+                "   \"updatedAt\": \"" + this.updatedAt + "\"\n" +
+                "}";
+    } // for converting the information to JSON format
 }
