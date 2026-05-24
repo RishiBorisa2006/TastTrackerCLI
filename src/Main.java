@@ -1,23 +1,28 @@
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
+
+import java.util.ArrayList;
+
 public class Main {
+    static ArrayList<Task> taskList = new ArrayList<>();
     public static void main(String[] args) {
-        if(args.length == 0){
-            System.out.println("Please provide a valid argument.");
-            return;
+
+    }
+    public static void saveTasks() {
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("[\n");
+
+        for (int i = 0; i < taskList.size(); i++) {
+            Task t = taskList.get(i);
+            jsonBuilder.append(t.toJson());
+            if(i < (taskList.size() - 1)) {
+                jsonBuilder.append(",\n");
+            }
+            else {
+                jsonBuilder.append("\n");
+            }
         }
-        String input = args[0];
-        switch (input) {
-            case "add":
-                System.out.println("You chose add!");
-                break;
-            case "list":
-                System.out.println("You chose list!");
-                break;
-            case "delete":
-                System.out.println("You chose delete!");
-                break;
-            default:
-                System.out.println("Invalid input!");
-                break;
-        }
+        jsonBuilder.append("]");
     }
 }
